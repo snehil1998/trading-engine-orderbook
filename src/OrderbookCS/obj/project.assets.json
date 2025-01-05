@@ -113,16 +113,6 @@
           "buildTransitive/net8.0/_._": {}
         }
       },
-      "TradingEngineServer.Instrument/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "compile": {
-          "bin/placeholder/TradingEngineServer.Instrument.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/TradingEngineServer.Instrument.dll": {}
-        }
-      },
       "TradingEngineServer.Logging/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -384,11 +374,6 @@
         "useSharedDesignerContext.txt"
       ]
     },
-    "TradingEngineServer.Instrument/1.0.0": {
-      "type": "project",
-      "path": "../InstrumentCS/InstrumentCS.csproj",
-      "msbuildProject": "../InstrumentCS/InstrumentCS.csproj"
-    },
     "TradingEngineServer.Logging/1.0.0": {
       "type": "project",
       "path": "../LoggingCS/LoggingCS/LoggingCS.csproj",
@@ -402,7 +387,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "TradingEngineServer.Instrument >= 1.0.0",
       "TradingEngineServer.Logging >= 1.0.0",
       "TradingEngineServer.Orders >= 1.0.0"
     ]
@@ -413,11 +397,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrderbookCS/OrderbookCS.csproj",
+      "projectUniqueName": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrderbookCS/OrderbookCS.csproj",
       "projectName": "TradingEngineServer.Orderbook",
-      "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrderbookCS/OrderbookCS.csproj",
+      "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrderbookCS/OrderbookCS.csproj",
       "packagesPath": "/Users/snehil1998/.nuget/packages/",
-      "outputPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrderbookCS/obj/",
+      "outputPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrderbookCS/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/snehil1998/.nuget/NuGet/NuGet.Config"
@@ -432,14 +416,11 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "/Users/snehil1998/Documents/Repos/trading-engine/src/InstrumentCS/InstrumentCS.csproj": {
-              "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/InstrumentCS/InstrumentCS.csproj"
+            "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/LoggingCS/LoggingCS/LoggingCS.csproj": {
+              "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/LoggingCS/LoggingCS/LoggingCS.csproj"
             },
-            "/Users/snehil1998/Documents/Repos/trading-engine/src/LoggingCS/LoggingCS/LoggingCS.csproj": {
-              "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/LoggingCS/LoggingCS/LoggingCS.csproj"
-            },
-            "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj": {
-              "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj"
+            "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj": {
+              "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj"
             }
           }
         }

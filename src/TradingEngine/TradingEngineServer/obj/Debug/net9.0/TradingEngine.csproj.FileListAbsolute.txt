@@ -39,3 +39,12 @@
 /Users/snehil1998/Documents/Repos/trading-engine/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngineServer.Core.pdb
 /Users/snehil1998/Documents/Repos/trading-engine/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.genruntimeconfig.cache
 /Users/snehil1998/Documents/Repos/trading-engine/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/ref/TradingEngineServer.Core.dll
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.csproj.AssemblyReference.cache
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.GeneratedMSBuildEditorConfig.editorconfig
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.AssemblyInfoInputs.cache
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.AssemblyInfo.cs
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.csproj.CoreCompileInputs.cache
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngine.sourcelink.json
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngineServer.Core.dll
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/refint/TradingEngineServer.Core.dll
+/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/TradingEngine/TradingEngineServer/obj/Debug/net9.0/TradingEngineServer.Core.pdb

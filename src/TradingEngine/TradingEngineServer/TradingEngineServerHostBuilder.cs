@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TradingEngineServer.Core.Configuration;
-using TradingEngineServer.Instrument;
 using TradingEngineServer.Logging;
 using TradingEngineServer.Logging.LoggerConfiguration;
 using TradingEngineServer.Orderbook;

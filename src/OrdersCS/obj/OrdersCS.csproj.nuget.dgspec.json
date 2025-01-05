@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj": {}
+    "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj": {}
   },
   "projects": {
-    "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj": {
+    "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj",
+        "projectUniqueName": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj",
         "projectName": "TradingEngineServer.Orders",
-        "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/OrdersCS.csproj",
+        "projectPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/OrdersCS.csproj",
         "packagesPath": "/Users/snehil1998/.nuget/packages/",
-        "outputPath": "/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/",
+        "outputPath": "/Users/snehil1998/Documents/Repos/trading-engine-orderbook/src/OrdersCS/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/snehil1998/.nuget/NuGet/NuGet.Config"
