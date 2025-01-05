@@ -1,0 +1,11 @@
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/bin/Debug/net9.0/TradingEngineServer.Orders.deps.json
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/bin/Debug/net9.0/TradingEngineServer.Orders.dll
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/bin/Debug/net9.0/TradingEngineServer.Orders.pdb
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/OrdersCS.GeneratedMSBuildEditorConfig.editorconfig
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/OrdersCS.AssemblyInfoInputs.cache
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/OrdersCS.AssemblyInfo.cs
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/OrdersCS.csproj.CoreCompileInputs.cache
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/TradingEngineServer.Orders.dll
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/refint/TradingEngineServer.Orders.dll
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/TradingEngineServer.Orders.pdb
+/Users/snehil1998/Documents/Repos/trading-engine/src/OrdersCS/obj/Debug/net9.0/ref/TradingEngineServer.Orders.dll
