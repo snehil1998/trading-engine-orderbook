@@ -20,22 +20,28 @@ public class Orderbook : IRetrievalOrderbook
     private static void AddOrder(Order order, long orderPrice, SortedSet<PriceLevel> sidePriceLevels, IDictionary<long, OrderbookEntry> orderbook)
     {
         var existingPriceLevel = sidePriceLevels.FirstOrDefault(x => x.Price == orderPrice);
+        var orderbookEntry = new OrderbookEntry(order);
         if (existingPriceLevel is not null)
         {
-            var orderbookEntry = new OrderbookEntry(order);
-            var tailOrderbookEntry = existingPriceLevel.Tail;
-            tailOrderbookEntry.Next = orderbookEntry;
-            orderbookEntry.Previous = tailOrderbookEntry;
-            existingPriceLevel.Tail = orderbookEntry; 
-            orderbook.Add(order.OrderId, orderbookEntry);
+            if (existingPriceLevel.IsEmpty)
+            {
+                existingPriceLevel.Head = orderbookEntry;
+                existingPriceLevel.Tail = orderbookEntry;
+            }
+            else
+            {
+                var tailOrderbookEntry = existingPriceLevel.Tail;
+                tailOrderbookEntry!.Next = orderbookEntry;
+                orderbookEntry.Previous = tailOrderbookEntry;
+                existingPriceLevel.Tail = orderbookEntry; 
+            }
         }
         else
         {
-            var orderbookEntry = new OrderbookEntry(order);
-            var newOrderPriceLevel = new PriceLevel(orderPrice, orderbookEntry);
-            sidePriceLevels.Add(newOrderPriceLevel);
-            orderbook.Add(order.OrderId, orderbookEntry);
+            sidePriceLevels.Add(new PriceLevel(orderPrice, orderbookEntry));
         }
+
+        orderbook.Add(order.OrderId, orderbookEntry);
     }
 
     public bool ContainsOrder(long OrderId)
@@ -156,14 +162,14 @@ public class Orderbook : IRetrievalOrderbook
         orderbook.Remove(orderId);
     }
 
-    public SortedSet<PriceLevel> GetBidPriceLevel()
+    public IList<PriceLevel> GetBidPriceLevel()
     {
-        return _bidPriceLevel;
+        return _bidPriceLevel.ToList();
     }
 
-    public SortedSet<PriceLevel> GetAskPriceLevel()
+    public IList<PriceLevel> GetAskPriceLevel()
     {
-        return _askPriceLevel;
+        return _askPriceLevel.ToList();
     }
 
     // private readonly Security _instrument;
