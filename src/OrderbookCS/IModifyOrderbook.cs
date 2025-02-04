@@ -3,7 +3,7 @@ using TradingEngineServer.Orders;
 
 namespace TradingEngineServer.Orderbook;
 
-public interface IMatchingOrderbook
+public interface IModifyOrderbook
 {
-    MatchResult Match(Order order);
+    void ModifyOrder(ModifyOrder modifyOrder);
 }

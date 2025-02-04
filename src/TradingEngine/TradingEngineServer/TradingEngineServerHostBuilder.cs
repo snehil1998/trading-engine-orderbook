@@ -24,6 +24,7 @@ public sealed class TradingEngineServerHostBuilder
         services.AddSingleton<ITextLogger, TextLogger>();
         services.AddSingleton<IRetrievalOrderbook, Orderbook.Orderbook>();
         services.AddSingleton<IMatchingOrderbook, Fifo>();
+        services.AddSingleton<IModifyOrderbook, ModifyOrderbook>();
         services.AddSingleton<IActionsFactory, ActionsFactory>();
 
         // Add controllers and MVC

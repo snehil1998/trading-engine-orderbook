@@ -7,12 +7,13 @@ namespace TradingEngineServer.Input;
 
 public class ActionsFactory: IActionsFactory
 {
-    public ActionsFactory(ITextLogger textLogger, IRetrievalOrderbook orderbook, IMatchingOrderbook fifo)
+    public ActionsFactory(ITextLogger textLogger, IRetrievalOrderbook orderbook, IMatchingOrderbook fifo, IModifyOrderbook modifyOrderbook)
     {
         _logger = textLogger ?? throw new ArgumentNullException(nameof(textLogger));
         _inputFactory = new InputFactory(textLogger);
         _orderbook = orderbook;
         _fifo = fifo;
+        _modifyOrderbook = modifyOrderbook;
         _random = new Random();
     }
 
@@ -84,7 +85,7 @@ public class ActionsFactory: IActionsFactory
         if (isBuy is null) return;
 
         var modifyOrder = new ModifyOrder(new OrderCore(orderId, username), price.Value, quantity.Value, isBuy.Value);
-        _fifo.ModifyOrder(modifyOrder);
+        _modifyOrderbook.ModifyOrder(modifyOrder);
 
         Console.WriteLine($"Order {orderId} successfully modified!");
         _logger.Information(nameof(ActionsFactory), $"Order {orderId} successfully modified.");     
@@ -134,6 +135,7 @@ public class ActionsFactory: IActionsFactory
     private readonly InputFactory _inputFactory;
     private readonly IRetrievalOrderbook _orderbook;
     private readonly IMatchingOrderbook _fifo;
+    private readonly IModifyOrderbook _modifyOrderbook;
     private readonly Random _random;
 
 }

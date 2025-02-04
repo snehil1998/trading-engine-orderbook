@@ -11,21 +11,6 @@ public sealed class Fifo: IMatchingOrderbook
         _logger = logger;
     }
 
-    public void ModifyOrder(ModifyOrder modifyOrder)
-    {
-        if (_orderbook.ContainsOrder(modifyOrder.OrderId))
-        {
-            _orderbook.RemoveOrder(modifyOrder.ToCancelOrder());
-            
-            Match(modifyOrder.ToNewOrder());
-        }
-        else
-        {
-            _logger.Error($"{nameof(Orderbook)}", $"OrderID {modifyOrder.OrderId} does not exist in orderbook and cannot be modified");
-        }
-
-    }
-
     public MatchResult Match(Order order)
     {
         if (order == null || order.CurrentQuantity <= 0)
