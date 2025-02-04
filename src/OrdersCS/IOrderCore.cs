@@ -4,6 +4,6 @@ namespace TradingEngineServer.Orders;
 
 public interface IOrderCore
 {
-    public long OrderId { get; }
+    public string OrderId { get; }
     public string Username { get; }
 }

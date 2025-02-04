@@ -24,7 +24,7 @@ public class ModifyOrder: IOrderCore
     public uint Quantity { get; init; }
     public long Price { get; init; }
     public bool IsBuySide { get; init; }
-    public long OrderId => _orderCore.OrderId;
+    public string OrderId => _orderCore.OrderId;
     public string Username => _orderCore.Username;
 
     private readonly IOrderCore _orderCore;

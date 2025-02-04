@@ -10,7 +10,7 @@ public class Rejection: IOrderCore
         RejectionReason = rejectionReason;
     }
 
-    public long OrderId => _rejectedOrder.OrderId;
+    public string OrderId => _rejectedOrder.OrderId;
     public string Username => _rejectedOrder.Username;
     public RejectionReason RejectionReason { get; init; }
 

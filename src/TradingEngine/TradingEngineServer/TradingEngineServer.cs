@@ -2,19 +2,16 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using TradingEngineServer.Core.Configuration;
 using TradingEngineServer.Logging;
-using TradingEngineServer.Orderbook;
 using TradingEngineServer.Input;
 
 namespace TradingEngineServer.Core;
 
 internal class TradingEngineServer: BackgroundService, ITradingEngineServer
 {
-    public TradingEngineServer(ITextLogger textLogger, IOptions<TradingEngineServerConfiguration> config,
-    IMatchingOrderbook fifo, IActionsFactory actionsFactory)
+    public TradingEngineServer(ITextLogger textLogger, IOptions<TradingEngineServerConfiguration> config, IActionsFactory actionsFactory)
     {
         _logger = textLogger ?? throw new ArgumentNullException(nameof(textLogger));
         _tradingEngineServerConfiguration = config.Value ?? throw new ArgumentNullException(nameof(config));
-        _fifo = fifo;
         _actionsFactory = actionsFactory;
     }
 
@@ -26,27 +23,47 @@ internal class TradingEngineServer: BackgroundService, ITradingEngineServer
     protected override Task ExecuteAsync(CancellationToken token)
     {
         _logger.Information(nameof(TradingEngineServer), $"Starting Trading Engine");
+        
+        Console.WriteLine("Enter your username: ");
+        string username = Console.ReadLine() ?? throw new Exception("Invalid username");
+
         while(!token.IsCancellationRequested)
         {
-            Console.WriteLine("\nWhat action do you wish to perform: Add order(1), Remove order(2), Modify order(3), Exit(4): ");
-            if (!int.TryParse(Console.ReadLine(), out int input) || !validInputs.Contains(input))
+            Console.WriteLine($"Hi {username}! What action do you wish to perform: Add order(1), Remove order(2), Modify order(3), Print orderbook(4), Print orders(5), Exit(6): ");
+            if (!int.TryParse(Console.ReadLine(), out int input))
             {
                 Console.WriteLine("Invalid action input. Try again.");
                 continue;
             }
 
-            if (input == 4) {
-                break;
-            }
-            else if (input == 1)
+            if(input == 1)
             {
-                _actionsFactory.AddOrder(_fifo, token);
+                _actionsFactory.AddOrder(username, token);
+            }
+            else if(input == 2) {
+                _actionsFactory.CancelOrder(username, token);
+            }
+            else if(input == 3)
+            {
+                _actionsFactory.ModfifyOrder(username, token);
+            }
+            else if(input == 4)
+            {
+                _actionsFactory.PrintOrderbook(); 
+            }
+            else if(input == 5)
+            {
+                _actionsFactory.PrintOrders();
+            }
+            else if(input == 6)
+            {
+                break;
             }
             else
             {
-                Console.WriteLine("Action not implemented yet");
-                break;
-            } 
+                Console.WriteLine($"Action {input} does not exist. Try again.");
+                _logger.Warning(nameof(TradingEngineServer), $"Action {input} does not exist. Try again.");
+            }                    
         }
         Console.WriteLine("Stopped trading engine");
         _logger.Information(nameof(TradingEngineServer), "Stopped trading engine");
@@ -55,7 +72,5 @@ internal class TradingEngineServer: BackgroundService, ITradingEngineServer
 
     private readonly ITextLogger _logger;
     private readonly TradingEngineServerConfiguration _tradingEngineServerConfiguration;
-    private readonly IMatchingOrderbook _fifo;
     private readonly IActionsFactory _actionsFactory;
-    private readonly int[] validInputs = [1, 2, 3, 4];
 }

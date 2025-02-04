@@ -1,12 +1,29 @@
+using TradingEngineServer.Logging;
 using TradingEngineServer.Orders;
 
 namespace TradingEngineServer.Orderbook;
 
 public sealed class Fifo: IMatchingOrderbook
 {
-    public Fifo(IRetrievalOrderbook orderbook)
+    public Fifo(IRetrievalOrderbook orderbook, ITextLogger logger)
     {
         _orderbook = orderbook ?? throw new ArgumentNullException(nameof(orderbook));
+        _logger = logger;
+    }
+
+    public void ModifyOrder(ModifyOrder modifyOrder)
+    {
+        if (_orderbook.ContainsOrder(modifyOrder.OrderId))
+        {
+            _orderbook.RemoveOrder(modifyOrder.ToCancelOrder());
+            
+            Match(modifyOrder.ToNewOrder());
+        }
+        else
+        {
+            _logger.Error($"{nameof(Orderbook)}", $"OrderID {modifyOrder.OrderId} does not exist in orderbook and cannot be modified");
+        }
+
     }
 
     public MatchResult Match(Order order)
@@ -69,4 +86,5 @@ public sealed class Fifo: IMatchingOrderbook
         return matchedRecords;
     }
     private readonly IRetrievalOrderbook _orderbook;
+    private readonly ITextLogger _logger;
 }

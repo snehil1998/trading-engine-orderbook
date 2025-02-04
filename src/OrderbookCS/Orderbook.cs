@@ -17,7 +17,7 @@ public class Orderbook : IRetrievalOrderbook
         AddOrder(order, order.Price, order.IsBuySide ? _bidPriceLevel : _askPriceLevel, _orderbook);
     }
 
-    private static void AddOrder(Order order, long orderPrice, SortedSet<PriceLevel> sidePriceLevels, IDictionary<long, OrderbookEntry> orderbook)
+    private static void AddOrder(Order order, long orderPrice, SortedSet<PriceLevel> sidePriceLevels, IDictionary<string, OrderbookEntry> orderbook)
     {
         var existingPriceLevel = sidePriceLevels.FirstOrDefault(x => x.Price == orderPrice);
         var orderbookEntry = new OrderbookEntry(order);
@@ -44,7 +44,7 @@ public class Orderbook : IRetrievalOrderbook
         orderbook.Add(order.OrderId, orderbookEntry);
     }
 
-    public bool ContainsOrder(long OrderId)
+    public bool ContainsOrder(string OrderId)
     {
         return _orderbook.ContainsKey(OrderId);
     }
@@ -93,20 +93,6 @@ public class Orderbook : IRetrievalOrderbook
         return new OrderbookSpread(bestBid, bestAsk);
     }
 
-    public void ModifyOrder(ModifyOrder modifyOrder)
-    {
-        if (_orderbook.ContainsKey(modifyOrder.OrderId))
-        {
-            RemoveOrder(modifyOrder.ToCancelOrder());
-            AddOrder(modifyOrder.ToNewOrder());
-        }
-        else
-        {
-            _logger.Error($"{nameof(Orderbook)}", $"OrderID {modifyOrder.OrderId} does not exist in orderbook and cannot be modified");
-        }
-
-    }
-
     public void RemoveOrder(CancelOrder cancelOrder)
     {
         if(_orderbook.TryGetValue(cancelOrder.OrderId, out var orderbookEntry))
@@ -120,7 +106,7 @@ public class Orderbook : IRetrievalOrderbook
         }
     }
 
-    private static void RemoveOrder(long orderId, OrderbookEntry orderbookEntry, IDictionary<long,
+    private static void RemoveOrder(string orderId, OrderbookEntry orderbookEntry, IDictionary<string,
     OrderbookEntry> orderbook, SortedSet<PriceLevel> priceLevels)
     {
         // remove the orderbook entry within the linkedlist
@@ -176,5 +162,5 @@ public class Orderbook : IRetrievalOrderbook
     private readonly ITextLogger _logger;
     private SortedSet<PriceLevel> _bidPriceLevel = new SortedSet<PriceLevel>(BidPriceLevelComparer.Comparer);
     private SortedSet<PriceLevel> _askPriceLevel = new SortedSet<PriceLevel>(AskPriceLevelComparer.Comparer);
-    private Dictionary<long, OrderbookEntry> _orderbook = new Dictionary<long, OrderbookEntry>();
+    private Dictionary<string, OrderbookEntry> _orderbook = new Dictionary<string, OrderbookEntry>();
 }

@@ -8,23 +8,6 @@ internal class InputFactory
     {
         _logger = textLogger;
     }
-    public int? EnterUserId(CancellationToken token)
-    {
-        while(!token.IsCancellationRequested)
-        {
-            Console.Write("Enter userID or enter 'exit' to exit: ");
-            string? userIdInput = Console.ReadLine();
-            if (userIdInput?.Trim().ToLower() == "exit") break;
-            if (userIdInput is null || !int.TryParse(userIdInput, out int userId))
-            {
-                Console.WriteLine("Invalid userId. Try again.");
-                continue;
-            }
-            return userId;
-        }
-        _logger.Information(nameof(InputFactory), "Exited from the program while entering userID");
-        return null;
-    }
 
     public string? EnterUsername(CancellationToken token)
     {
@@ -95,6 +78,24 @@ internal class InputFactory
             return sideInput == "buy";
         }
         _logger.Information(nameof(InputFactory), "Exited from the program while entering side");
+        return null;
+    }
+
+    public string? EnterOrderID(CancellationToken token)
+    {
+        while(!token.IsCancellationRequested)
+        {
+            Console.Write("Enter orderID or enter 'exit' to exit: ");
+            string? orderId = Console.ReadLine();
+            if (orderId?.Trim().ToLower() == "exit") break;
+            if (orderId is null)
+            {
+                Console.WriteLine("Invalid orderID. Try again.");
+                continue;
+            }
+            return orderId;
+        }
+        _logger.Information(nameof(InputFactory), "Exited from the program while entering orderID");
         return null;
     }
 

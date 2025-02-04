@@ -4,11 +4,11 @@ namespace TradingEngineServer.Orders;
 
 public sealed class OrderCore: IOrderCore
 {
-    public OrderCore(long orderId, string username)
+    public OrderCore(string orderId, string username)
     {
         OrderId = orderId;
         Username = username;
     }
-    public long OrderId { get; init; }
+    public string OrderId { get; init; }
     public string Username { get; init; }
 }

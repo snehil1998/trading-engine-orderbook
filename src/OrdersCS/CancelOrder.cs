@@ -8,7 +8,7 @@ public class CancelOrder : IOrderCore
     {
         _orderCore = orderCore;
     }
-    public long OrderId => _orderCore.OrderId;
+    public string OrderId => _orderCore.OrderId;
     public string Username => _orderCore.Username;
 
     private readonly IOrderCore _orderCore;

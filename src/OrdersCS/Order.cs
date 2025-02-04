@@ -32,7 +32,7 @@ public class Order: IOrderCore
     public uint CurrentQuantity { get; private set; }
     public long Price { get; init; }
     public bool IsBuySide { get; init; }
-    public long OrderId => _orderCore.OrderId;
+    public string OrderId => _orderCore.OrderId;
     public string Username => _orderCore.Username;
     private readonly IOrderCore _orderCore;
 }
