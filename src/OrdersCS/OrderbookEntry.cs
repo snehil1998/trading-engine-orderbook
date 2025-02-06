@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace TradingEngineServer.Orders;
 
-public class OrderbookEntry
+public sealed class OrderbookEntry
 {
     public OrderbookEntry(Order currentOrder)
     {

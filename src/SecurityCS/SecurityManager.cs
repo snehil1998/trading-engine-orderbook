@@ -3,7 +3,7 @@ using TradingEngineServer.Logging;
 
 namespace TradingEngineServer.Security;
 
-public class SecurityManager: ISecurityManager
+public sealed class SecurityManager: ISecurityManager
 {
     public SecurityManager(ITextLogger logger)
     {

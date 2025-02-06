@@ -6,7 +6,7 @@ using TradingEngineServer.Input;
 
 namespace TradingEngineServer.Core;
 
-internal class TradingEngineServer: BackgroundService, ITradingEngineServer
+internal sealed class TradingEngineServer: BackgroundService, ITradingEngineServer
 {
     public TradingEngineServer(ITextLogger textLogger, IOptions<TradingEngineServerConfiguration> config, IActionsFactory actionsFactory)
     {

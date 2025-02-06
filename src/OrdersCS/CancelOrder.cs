@@ -2,7 +2,7 @@ using System;
 
 namespace TradingEngineServer.Orders;
 
-public class CancelOrder : IOrderCore
+public sealed class CancelOrder : IOrderCore
 {
     public CancelOrder(IOrderCore orderCore)
     {
