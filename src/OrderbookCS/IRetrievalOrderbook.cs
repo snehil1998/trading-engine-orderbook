@@ -9,4 +9,6 @@ public interface IRetrievalOrderbook: IEntryOrderbook
     IReadOnlyCollection<OrderbookEntry> GetAskEntries();
     public IList<PriceLevel> GetBidPriceLevel();
     public IList<PriceLevel> GetAskPriceLevel();
+    public bool HasOrder(string orderId);
+    public Order GetOrder(string orderId);
 }

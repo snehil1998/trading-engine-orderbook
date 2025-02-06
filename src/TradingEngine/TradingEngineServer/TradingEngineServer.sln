@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderbookCS", "..\..\Orderb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputCS", "..\..\InputCS\InputCS.csproj", "{C931B13D-9EC3-45E4-9957-30664D985B0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityCS", "..\..\SecurityCS\SecurityCS.csproj", "{72E094CB-987A-4C67-B25C-0E35FBB44CEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C931B13D-9EC3-45E4-9957-30664D985B0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C931B13D-9EC3-45E4-9957-30664D985B0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C931B13D-9EC3-45E4-9957-30664D985B0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E094CB-987A-4C67-B25C-0E35FBB44CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E094CB-987A-4C67-B25C-0E35FBB44CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E094CB-987A-4C67-B25C-0E35FBB44CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E094CB-987A-4C67-B25C-0E35FBB44CEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

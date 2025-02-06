@@ -2,7 +2,7 @@
 
 namespace TradingEngineServer.Input;
 
-internal class InputFactory
+internal sealed class InputFactory
 {
     public InputFactory(ITextLogger textLogger)
     {
@@ -31,7 +31,7 @@ internal class InputFactory
     {
         while(!token.IsCancellationRequested)
         {
-            Console.Write("Enter quantity or enter 'exit' to exit");
+            Console.Write("Enter quantity or enter 'exit' to exit: ");
             string? quantityInput = Console.ReadLine();
             if (quantityInput?.Trim().ToLower() == "exit") break;
             if (!uint.TryParse(quantityInput, out uint quantity))
@@ -96,6 +96,60 @@ internal class InputFactory
             return orderId;
         }
         _logger.Information(nameof(InputFactory), "Exited from the program while entering orderID");
+        return null;
+    }
+
+    public string? EnterSecuritySymbol(CancellationToken token)
+    {
+        while(!token.IsCancellationRequested)
+        {
+            Console.Write("Enter security symbol or enter 'exit' to exit: ");
+            string? symbol = Console.ReadLine();
+            if (symbol?.Trim().ToLower() == "exit") break;
+            if (symbol is null)
+            {
+                Console.WriteLine("Invalid security symbol. Try again.");
+                continue;
+            }
+            return symbol;
+        }
+        _logger.Information(nameof(InputFactory), "Exited from the program while entering security symbol");
+        return null;
+    }
+
+    public string? EnterSecurityName(CancellationToken token)
+    {
+        while(!token.IsCancellationRequested)
+        {
+            Console.Write("Enter security name or enter 'exit' to exit: ");
+            string? name = Console.ReadLine();
+            if (name?.Trim().ToLower() == "exit") break;
+            if (name is null)
+            {
+                Console.WriteLine("Invalid security name. Try again.");
+                continue;
+            }
+            return name;
+        }
+        _logger.Information(nameof(InputFactory), "Exited from the program while entering security name");
+        return null;
+    }
+
+    public string? EnterSecurityAssetType(CancellationToken token)
+    {
+        while(!token.IsCancellationRequested)
+        {
+            Console.Write("Enter security asset type or enter 'exit' to exit: ");
+            string? assetType = Console.ReadLine();
+            if (assetType?.Trim().ToLower() == "exit") break;
+            if (assetType is null)
+            {
+                Console.WriteLine("Invalid security asset type. Try again.");
+                continue;
+            }
+            return assetType;
+        }
+        _logger.Information(nameof(InputFactory), "Exited from the program while entering security asset type");
         return null;
     }
 

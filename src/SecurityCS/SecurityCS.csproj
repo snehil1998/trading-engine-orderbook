@@ -5,15 +5,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>13</LangVersion>
-    <RootNameSpace>TradingEngineServer.Input</RootNameSpace>
-    <AssemblyName>TradingEngineServer.Input</AssemblyName>
+    <RootNameSpace>TradingEngineServer.Security</RootNameSpace>
+    <AssemblyName>TradingEngineServer.Security</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../LoggingCS/LoggingCS/LoggingCS.csproj" />
     <ProjectReference Include="../OrderbookCS/OrderbookCS.csproj" />
-    <ProjectReference Include="../OrdersCS/OrdersCS.csproj" />
-    <ProjectReference Include="../SecurityCS/SecurityCS.csproj" />
   </ItemGroup>
 
 </Project>
