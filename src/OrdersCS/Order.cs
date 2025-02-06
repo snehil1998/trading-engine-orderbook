@@ -2,7 +2,7 @@ using System;
 
 namespace TradingEngineServer.Orders;
 
-public class Order: IOrderCore
+public sealed class Order: IOrderCore
 {
     public Order(IOrderCore orderCore, uint quantity, long price, bool isBuySide)
     {

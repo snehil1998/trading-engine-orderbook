@@ -4,7 +4,7 @@ using TradingEngineServer.Core.Configuration;
 using TradingEngineServer.Input;
 using TradingEngineServer.Logging;
 using TradingEngineServer.Logging.LoggerConfiguration;
-using TradingEngineServer.Orderbook;
+using TradingEngineServer.Security;
 
 namespace TradingEngineServer.Core;
 
@@ -22,9 +22,7 @@ public sealed class TradingEngineServerHostBuilder
         // add singleton objects
         services.AddSingleton<ITradingEngineServer, TradingEngineServer>();
         services.AddSingleton<ITextLogger, TextLogger>();
-        services.AddSingleton<IRetrievalOrderbook, Orderbook.Orderbook>();
-        services.AddSingleton<IMatchingOrderbook, Fifo>();
-        services.AddSingleton<IModifyOrderbook, ModifyOrderbook>();
+        services.AddSingleton<ISecurityManager, SecurityManager>();
         services.AddSingleton<IActionsFactory, ActionsFactory>();
 
         // Add controllers and MVC

@@ -3,9 +3,9 @@ using TradingEngineServer.Orders;
 
 namespace TradingEngineServer.Orderbook;
 
-public class Orderbook : IRetrievalOrderbook
+public sealed class OrderBook : IRetrievalOrderbook
 {
-    public Orderbook(ITextLogger logger)
+    public OrderBook(ITextLogger logger)
     {
         _logger = logger;
     }
@@ -14,10 +14,10 @@ public class Orderbook : IRetrievalOrderbook
 
     public void AddOrder(Order order)
     {
-        AddOrder(order, order.Price, order.IsBuySide ? _bidPriceLevel : _askPriceLevel, _orderbook);
+        AddOrder(order, order.Price, order.IsBuySide ? _bidPriceLevel : _askPriceLevel);
     }
 
-    private static void AddOrder(Order order, long orderPrice, SortedSet<PriceLevel> sidePriceLevels, IDictionary<string, OrderbookEntry> orderbook)
+    private void AddOrder(Order order, long orderPrice, SortedSet<PriceLevel> sidePriceLevels)
     {
         var existingPriceLevel = sidePriceLevels.FirstOrDefault(x => x.Price == orderPrice);
         var orderbookEntry = new OrderbookEntry(order);
@@ -41,7 +41,7 @@ public class Orderbook : IRetrievalOrderbook
             sidePriceLevels.Add(new PriceLevel(orderPrice, orderbookEntry));
         }
 
-        orderbook.Add(order.OrderId, orderbookEntry);
+        _orderbook.Add(order.OrderId, orderbookEntry);
     }
 
     public bool ContainsOrder(string OrderId)
@@ -156,6 +156,16 @@ public class Orderbook : IRetrievalOrderbook
     public IList<PriceLevel> GetAskPriceLevel()
     {
         return _askPriceLevel.ToList();
+    }
+
+    public bool HasOrder(string orderId) => _orderbook.ContainsKey(orderId);
+
+    public Order GetOrder(string orderId) {
+        if (!HasOrder(orderId))
+        {
+            throw new Exception($"OrderID {orderId} does not exist in the orderbook");
+        }
+        return  _orderbook[orderId].Order;
     }
 
     // private readonly Security _instrument;

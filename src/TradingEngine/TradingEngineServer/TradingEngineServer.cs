@@ -6,7 +6,7 @@ using TradingEngineServer.Input;
 
 namespace TradingEngineServer.Core;
 
-internal class TradingEngineServer: BackgroundService, ITradingEngineServer
+internal sealed class TradingEngineServer: BackgroundService, ITradingEngineServer
 {
     public TradingEngineServer(ITextLogger textLogger, IOptions<TradingEngineServerConfiguration> config, IActionsFactory actionsFactory)
     {
@@ -23,48 +23,59 @@ internal class TradingEngineServer: BackgroundService, ITradingEngineServer
     protected override Task ExecuteAsync(CancellationToken token)
     {
         _logger.Information(nameof(TradingEngineServer), $"Starting Trading Engine");
-        
-        Console.WriteLine("Enter your username: ");
-        string username = Console.ReadLine() ?? throw new Exception("Invalid username");
 
         while(!token.IsCancellationRequested)
         {
-            Console.WriteLine($"Hi {username}! What action do you wish to perform: Add order(1), Remove order(2), Modify order(3), Print orderbook(4), Print orders(5), Exit(6): ");
-            if (!int.TryParse(Console.ReadLine(), out int input))
-            {
-                Console.WriteLine("Invalid action input. Try again.");
-                continue;
-            }
+        
+            Console.WriteLine("Enter your username or 'exit' to exit: ");
+            string username = Console.ReadLine() ?? throw new Exception("Invalid username");
+            if (username.ToLower() == "exit") break;
 
-            if(input == 1)
+            while(!token.IsCancellationRequested)
             {
-                _actionsFactory.AddOrder(username, token);
+                Console.WriteLine($"Hi {username}! What action do you wish to perform: Add order(1), Remove order(2), Modify order(3), " +
+                "Print orderbook(4), Print orders(5), Add security(6), Exit(7): ");
+                if (!int.TryParse(Console.ReadLine(), out int input))
+                {
+                    Console.WriteLine("Invalid action input. Try again.");
+                    continue;
+                }
+
+                if(input == 1)
+                {
+                    _actionsFactory.AddOrder(username, token);
+                }
+                else if(input == 2) {
+                    _actionsFactory.CancelOrder(username, token);
+                }
+                else if(input == 3)
+                {
+                    _actionsFactory.ModifyOrder(username, token);
+                }
+                else if(input == 4)
+                {
+                    _actionsFactory.PrintOrderbook(token); 
+                }
+                else if(input == 5)
+                {
+                    _actionsFactory.PrintOrders(token);
+                }
+                else if(input == 6)
+                {
+                    _actionsFactory.AddSecurity(token);
+                }
+                else if(input == 7)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"Action {input} does not exist. Try again.");
+                    _logger.Warning(nameof(TradingEngineServer), $"Action {input} does not exist. Try again.");
+                }                    
             }
-            else if(input == 2) {
-                _actionsFactory.CancelOrder(username, token);
-            }
-            else if(input == 3)
-            {
-                _actionsFactory.ModfifyOrder(username, token);
-            }
-            else if(input == 4)
-            {
-                _actionsFactory.PrintOrderbook(); 
-            }
-            else if(input == 5)
-            {
-                _actionsFactory.PrintOrders();
-            }
-            else if(input == 6)
-            {
-                break;
-            }
-            else
-            {
-                Console.WriteLine($"Action {input} does not exist. Try again.");
-                _logger.Warning(nameof(TradingEngineServer), $"Action {input} does not exist. Try again.");
-            }                    
         }
+
         Console.WriteLine("Stopped trading engine");
         _logger.Information(nameof(TradingEngineServer), "Stopped trading engine");
         return Task.CompletedTask;

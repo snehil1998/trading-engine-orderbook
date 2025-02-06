@@ -1,6 +1,6 @@
 namespace TradingEngineServer.Orders;
 
-public class ModifyOrder: IOrderCore
+public sealed class ModifyOrder: IOrderCore
 {
     public ModifyOrder(IOrderCore orderCore, long modifiedPrice, uint modifiedQuantity, bool isBuySide)
     {

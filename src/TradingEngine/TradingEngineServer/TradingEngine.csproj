@@ -24,6 +24,7 @@
     <ProjectReference Include="../../OrderbookCS/OrderbookCS.csproj" />
     <ProjectReference Include="../../OrdersCS/OrdersCS.csproj" />
     <ProjectReference Include="../../InputCS/InputCS.csproj" />
+    <ProjectReference Include="../../SecurityCS/SecurityCS.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,9 +1,7 @@
-using System;
-
 namespace TradingEngineServer.Orders;
 
 // this class stores the orderbook entries at a price level
-public class PriceLevel
+public sealed class PriceLevel
 {
     public PriceLevel(long price, OrderbookEntry orderbookEntry)
     {
